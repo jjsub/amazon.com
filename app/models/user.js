@@ -23,12 +23,12 @@ User.register = function(o, cb){
   });
 };
 
-User.authenticate = function(o, cb){
-  User.collection.findOne({email:o.email}, function(err, user){
+User.localAuthenticate = function(email, password, cb){
+  User.collection.findOne({email:email}, function(err, user){
     if(!user){return cb();}
-    var isOk = bcrypt.compareSync(o.password, user.password);
+    var isOk = bcrypt.compareSync(password, user.password);
     if(!isOk){return cb();}
-    cb(user);
+    cb(null, user);
   });
 };
 

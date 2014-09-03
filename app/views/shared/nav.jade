@@ -17,6 +17,9 @@
                 input(type='hidden', name='_method', value='delete')
                 button.btn.btn-danger= user.email
         else
-          li: a(href='/register') Register
+          li: a(href='/register')
+                     i.fa.fa-child.fa-lg &nbsp;
+                     | Register
           li: a(href='/login') Login
+
 

@@ -1,14 +1,10 @@
 'use strict';
 
-var User = require('../models/user');
+//var User = require('../models/user');
 
-exports.authenticate = function(req, res, next){
-  if(!req.session.userId){return next();}
-
-  User.findById(req.session.userId, function(err, user){
-    res.locals.user = user;
-    next();
-  });
+exports.locals = function(req, res, next){
+  res.locals.user = req.user;
+  next();
 };
 
 exports.bounce = function(req, res, next){
